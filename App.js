@@ -109,6 +109,8 @@ export class App extends Component {
     }));
     let message = messages[0].text;
 
+    console.log(messages);
+
     Dialogflow_V2.requestQuery(
       message,
       result => this.handleGoogleResponse(result),
@@ -133,14 +135,7 @@ export class App extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View
-          style={{
-            height: 50,
-            width: '100%',
-            backgroundColor: 'lightblue',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+        <View style={styles.header}>
           <Text style={{fontSize: 24, fontWeight: 'bold'}}>Chat Bot</Text>
         </View>
         <GiftedChat
@@ -150,7 +145,7 @@ export class App extends Component {
           renderSend={props => {
             return (
               <Send {...props}>
-                <View style={{marginHorizontal: 10, marginTop: 10}}>
+                <View style={styles.containerIconSend}>
                   <Image source={iconSend} style={{height: 40, width: 40}} />
                 </View>
               </Send>
@@ -160,14 +155,9 @@ export class App extends Component {
             return (
               <InputToolbar
                 {...props}
-                style={{backgroundColor: 'red', marginTop: 15}}
-                containerStyle={{
-                  marginHorizontal: 15,
-                  marginBottom: 10,
-                  borderRadius: 10,
-                  backgroundColor: 'lightblue',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                containerStyle={styles.containerInput}
+                textInputProps={{
+                  style: styles.inputStyle,
                 }}
               />
             );
@@ -186,4 +176,34 @@ export default App;
 
 const styles = StyleSheet.create({
   container: {flex: 1},
+  header: {
+    height: 50,
+    width: '100%',
+    backgroundColor: 'lightblue',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  containerIconSend: {
+    marginHorizontal: 10,
+    marginTop: 10,
+  },
+  containerInput: {
+    marginLeft: 15,
+    marginRight: 30,
+    marginBottom: 10,
+    borderWidth: 0,
+    borderColor: 'transparent',
+    backgroundColor: 'transparent',
+  },
+  inputStyle: {
+    width: '86%',
+    height: '100%',
+    fontSize: 16,
+    color: 'black',
+    paddingTop: 6,
+    paddingLeft: 16,
+    backgroundColor: 'lightblue',
+    borderWidth: 2,
+    borderRadius: 10,
+  },
 });
