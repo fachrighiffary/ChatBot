@@ -26,7 +26,18 @@ export class App extends Component {
     messages: [
       {
         _id: 1,
-        text: 'Hi my name is Mr.Robot',
+        text: `
+        1. Siapa Saya ? \n
+        2. About Lenna.ai? \n
+        3. Apa saja product lenna ? \n
+        4. Lokasi Kantor Lenna.ai \n
+        5. Apa itu Conversation Studio ? \n
+        6. Apa itu Omni Messaging  ? \n
+        7. Apa itu SELENA ? \n
+        8. Apa itu Lenna Board ? \n
+        9. Apa itu Lenna Live Chat ? \n
+        10. Apa itu Virtual Assistant ? 
+        `,
         createdAt: new Date(),
         user: BOT,
       },
@@ -81,7 +92,7 @@ export class App extends Component {
     } else {
       msg = {
         _id: this.state.messages.length + 1,
-        text,
+        text: `${text}`,
         createdAt: new Date(),
         user: BOT,
       };
